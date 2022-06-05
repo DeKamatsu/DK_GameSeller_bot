@@ -180,10 +180,10 @@ def unit_order(order_date, order_time, unit_name):
 
 def notice_manager(bot, message):
     """Отправляет уведомление пользователям, зарегистрированным в базе данных менеджеров"""
-    cur.execute(f"SELECT user_id FROM managers);")
+    cur.execute(f"SELECT user_id FROM managers;")
     resp = cur.fetchall()
     for i in resp:
-        bot.send_message(str(i[0]), message)
+        bot.send_message(i[0], message)
 
 
 def check_access(user_id):

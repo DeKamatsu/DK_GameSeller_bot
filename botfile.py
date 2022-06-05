@@ -41,7 +41,7 @@ def main():
                     markup.row(btns[i], btns[i + 1])
                 elif q - i > 0:
                     markup.row(btns[i])
-            bot.send_message(user_id, f"Выберите желаемое время посещения нашей бильярдной:", reply_markup=markup)
+            bot.send_message(user_id, f"Выберите желаемое время посещения бильярдной:", reply_markup=markup)
         else:
             choice = str(message.text).split(' ')
             # Активация билета при его сканировании менеджером
@@ -177,7 +177,7 @@ def generate_ticket(user_id, order_date, order_time, unit_name):
     # https://t.me/xxxxxxxxxbot?start=хххXX-ххх_хх0123
     # https://t.me/xxxxxxxxxbot?startgroup=хххXX-ххх_хх0123
     # Источник: https://core.telegram.org/bots#deep-linking
-    url = f"t.me/DK_GameSeller_bot?start=reg-{db.reg_id(user_id)}-{order_date}-" \
+    url = f"https://t.me/DK_GameSeller_bot?start=reg-{db.reg_id(user_id)}-{order_date}-" \
           f"{''.join(order_time.split(':'))}-{unit_name[len(unit_name) - 1:]}"
     ticket_pic = qrcode.make(url)
     return ticket_pic
